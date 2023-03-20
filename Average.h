@@ -8,6 +8,7 @@ class Average
     float Fraction_Filter(float Value);
     void Set_Fraction_Filter(float Value);
     void Set_Fraction_Filter_Const(float A, float B);
+    int Rolling_Avg;
   
   private:
     int Num_Buffer[32];
@@ -41,7 +42,8 @@ int Average::Rolling_Average(int Value)
   for(i = 0;i < FILTER_SIZE;i++)
     sum += this->Num_Buffer[i];
 
-  return(sum/FILTER_SIZE);
+  Rolling_Avg = sum/FILTER_SIZE;
+  return(Rolling_Avg);
 }
 
 float Average::Fraction_Filter(float Value)
